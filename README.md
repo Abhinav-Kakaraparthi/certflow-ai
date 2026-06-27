@@ -347,3 +347,44 @@ certflow-ai/
 ## License
 
 MIT
+
+## Public Demo API
+
+The CertFlow AI backend is deployed publicly for UiPath API Workflow and Maestro integration.
+
+Base URL:
+
+https://certflow-ai-api.onrender.com
+
+Health check:
+
+GET /api/health
+
+UiPath-ready case start endpoint:
+
+POST /api/uipath/cases/{case_id}/start
+
+Example:
+
+POST /api/uipath/cases/CERT-003/start
+
+This returns a UiPath-ready orchestration payload containing:
+
+- case_status
+- overall_risk
+- human_review_required
+- missing_documents
+- next_uipath_action
+- maestro_stage
+- task_title
+- assigned_role
+- agent_summary
+- agent_findings
+
+Example routing result for CERT-003:
+
+- next_uipath_action: request_missing_evidence
+- maestro_stage: Evidence Collection
+- assigned_role: Certification Engineer
+- overall_risk: high
+
