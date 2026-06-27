@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { Activity } from "lucide-react";
 import { getCertificationCases, runCertificationCase } from "./services/certflowApi";
 import Sidebar from "./components/layout/Sidebar";
@@ -46,14 +46,15 @@ function App() {
             summary: result.agent_summary,
             missingDocuments: result.missing_documents,
             findings: result.agent_findings,
+            aiReasoning: result.ai_reasoning,
           };
         })
       );
 
       setCases(enrichedCases);
-      setSelectedCase(enrichedCases[0]);
+      setSelectedCase(enrichedCases.find((item) => item.id === "CERT-003") || enrichedCases[0]);
     } catch {
-      setError("Unable to connect to CertFlow backend. Confirm FastAPI is running on port 8001.");
+      setError("Unable to connect to CertFlow backend. Confirm FastAPI is running on port 8001 or use the deployed Render API.");
     } finally {
       setLoading(false);
     }

@@ -1,5 +1,6 @@
 ﻿from fastapi import APIRouter, HTTPException
 
+from app.models.certification import RiskLevel
 from app.models.human_review import HumanReviewRequest
 from app.services.ai_reasoning_service import AIReasoningService
 from app.services.case_data_service import get_certification_case
@@ -24,22 +25,29 @@ def start_uipath_certification_case(case_id: str):
 
     payload = build_uipath_case_payload(result)
 
-    try:
+    should_run_ai = (
+        result.overall_risk == RiskLevel.HIGH
+        or result.human_review_required
+        or len(result.missing_documents) > 0
+    )
+
+    if should_run_ai:
         ai_reasoning = ai_reasoning_service.analyze_case(case)
         payload["ai_reasoning"] = ai_reasoning.model_dump()
-    except Exception as error:
+    else:
         payload["ai_reasoning"] = {
-            "ai_model": "ai-reasoning-error",
-            "risk_explanation": "AI reasoning failed, but deterministic workflow routing completed successfully.",
+            "ai_model": "deterministic-low-risk-routing",
+            "risk_explanation": "Live AI reasoning was not required because deterministic agents found complete evidence and low certification risk.",
             "certification_concerns": [
-                "AI reasoning service error occurred during UiPath payload generation."
+                "No missing certification evidence detected.",
+                "No high-risk safety, software, structural, or control-logic escalation detected."
             ],
             "missing_evidence_questions": [
-                "Review deterministic agent findings and retry AI reasoning."
+                "No evidence questions required for this low-risk case."
             ],
-            "recommended_escalation": payload["assigned_role"],
-            "confidence_score": 0.0,
-            "audit_summary": f"AI reasoning failed: {str(error)}",
+            "recommended_escalation": "Auto approval",
+            "confidence_score": 1.0,
+            "audit_summary": "Case routed through deterministic low-risk approval to conserve AI quota and preserve scalable orchestration.",
         }
 
     return payload
