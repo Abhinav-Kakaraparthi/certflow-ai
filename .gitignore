@@ -25,3 +25,7 @@ Thumbs.db
 
 # Local coding agent skills
 .cursor/
+
+# Local secrets
+.env
+backend/.env

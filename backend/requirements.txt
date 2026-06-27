@@ -4,3 +4,4 @@ pydantic
 python-dotenv
 pytest
 httpx
+google-genai==2.10.0
