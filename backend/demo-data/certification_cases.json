@@ -1,0 +1,122 @@
+[
+  {
+    "case_id": "CERT-001",
+    "title": "Seat Tray Table Latch Material Change",
+    "aircraft_area": "Cabin Interior",
+    "component": "Passenger Seat Tray Table Latch",
+    "change_summary": "The latch material is changed from aluminum alloy to a lighter composite material with equivalent dimensions.",
+    "reason_for_change": "Weight reduction and supplier availability improvement.",
+    "certification_track": "supplemental_type_certificate",
+    "submitted_by": "Design Engineering Team",
+    "documents": [
+      {
+        "document_name": "Engineering Change Request",
+        "document_type": "change_request",
+        "is_available": true,
+        "notes": "Submitted with design summary."
+      },
+      {
+        "document_name": "Updated Drawing Package",
+        "document_type": "drawing",
+        "is_available": true,
+        "notes": "Revision B attached."
+      },
+      {
+        "document_name": "Material Equivalency Analysis",
+        "document_type": "analysis",
+        "is_available": true,
+        "notes": "Shows equivalent strength and flammability compliance."
+      },
+      {
+        "document_name": "Compliance Statement",
+        "document_type": "compliance_statement",
+        "is_available": true,
+        "notes": "Prepared by certification engineer."
+      }
+    ]
+  },
+  {
+    "case_id": "CERT-002",
+    "title": "Seat Frame Bracket Geometry Update",
+    "aircraft_area": "Cabin Interior",
+    "component": "Seat Frame Support Bracket",
+    "change_summary": "The bracket geometry is modified to improve manufacturability and reduce assembly time.",
+    "reason_for_change": "Manufacturing simplification.",
+    "certification_track": "supplemental_type_certificate",
+    "submitted_by": "Manufacturing Engineering Team",
+    "documents": [
+      {
+        "document_name": "Engineering Change Request",
+        "document_type": "change_request",
+        "is_available": true,
+        "notes": "Submitted with bracket change summary."
+      },
+      {
+        "document_name": "Updated Drawing Package",
+        "document_type": "drawing",
+        "is_available": true,
+        "notes": "Revision C attached."
+      },
+      {
+        "document_name": "Stress Analysis Report",
+        "document_type": "stress_analysis",
+        "is_available": false,
+        "notes": "Required because load path may be affected."
+      },
+      {
+        "document_name": "Test Report",
+        "document_type": "test_report",
+        "is_available": false,
+        "notes": "Pending structural substantiation test."
+      },
+      {
+        "document_name": "Compliance Statement",
+        "document_type": "compliance_statement",
+        "is_available": true,
+        "notes": "Draft only."
+      }
+    ]
+  },
+  {
+    "case_id": "CERT-003",
+    "title": "Avionics Cooling Fan Controller Replacement",
+    "aircraft_area": "Avionics Bay",
+    "component": "Cooling Fan Controller",
+    "change_summary": "The existing fan controller is replaced with a new supplier controller that changes control logic and electrical interface behavior.",
+    "reason_for_change": "Obsolescence replacement due to discontinued supplier part.",
+    "certification_track": "faa_part_25",
+    "submitted_by": "Systems Engineering Team",
+    "documents": [
+      {
+        "document_name": "Engineering Change Request",
+        "document_type": "change_request",
+        "is_available": true,
+        "notes": "Submitted with supplier change rationale."
+      },
+      {
+        "document_name": "Electrical Interface Control Document",
+        "document_type": "interface_control_document",
+        "is_available": true,
+        "notes": "New interface behavior documented."
+      },
+      {
+        "document_name": "System Safety Assessment",
+        "document_type": "safety_assessment",
+        "is_available": false,
+        "notes": "Required because control logic changed."
+      },
+      {
+        "document_name": "Software Verification Evidence",
+        "document_type": "software_verification",
+        "is_available": false,
+        "notes": "Required for controller logic validation."
+      },
+      {
+        "document_name": "DER Review Record",
+        "document_type": "der_review",
+        "is_available": false,
+        "notes": "DER review required before approval."
+      }
+    ]
+  }
+]

@@ -1,11 +1,11 @@
-import json
+﻿import json
 from pathlib import Path
 from typing import List
 
 from app.models.certification import DesignChangeRequest
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 CASE_DATA_PATH = PROJECT_ROOT / "demo-data" / "certification_cases.json"
 
 
