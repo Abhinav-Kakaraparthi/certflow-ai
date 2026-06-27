@@ -21,3 +21,7 @@ Thumbs.db
 
 # Local artifacts
 *.log
+.uipath/.skills/
+
+# Local coding agent skills
+.cursor/
