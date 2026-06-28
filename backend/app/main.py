@@ -30,3 +30,20 @@ def root():
         "status": "running",
         "track": "UiPath Maestro Case",
     }
+
+@app.get("/health")
+def root_health_check():
+    return {
+        "status": "healthy",
+        "service": "CertFlow AI API",
+        "platform": "Render"
+    }
+
+
+@app.get("/api/health")
+def api_health_check():
+    return {
+        "status": "healthy",
+        "service": "CertFlow AI API",
+        "platform": "Render"
+    }
