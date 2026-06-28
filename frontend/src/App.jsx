@@ -17,6 +17,7 @@ import CaseDetailPanel from "./components/dashboard/CaseDetailPanel";
 import HumanReviewPanel from "./components/dashboard/HumanReviewPanel";
 import EnterpriseCommandCenter from "./components/dashboard/EnterpriseCommandCenter";
 import EvidenceWorkspace from "./components/dashboard/EvidenceWorkspace";
+import DecisionBasisPanel from "./components/dashboard/DecisionBasisPanel";
 import "./App.css";
 
 function scoreFromRisk(risk) {
@@ -221,6 +222,7 @@ function App() {
               selectedCase={selectedCase}
               onSelectCase={setSelectedCase}
             />
+            <DecisionBasisPanel selectedCase={selectedCase} />
             <CaseDetailPanel selectedCase={selectedCase} />
           </section>
         )}
@@ -255,6 +257,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
