@@ -1,0 +1,128 @@
+﻿[
+  {
+    "document_id": "DOC-001",
+    "case_id": "CERT-003",
+    "title": "Avionics Cooling Fan Controller System Safety Assessment",
+    "artifact_type": "System Safety Assessment",
+    "format": "structured_document",
+    "owner_id": "USR-004",
+    "current_editor_id": "USR-004",
+    "created_by": "USR-003",
+    "version": "0.3",
+    "status": "in_progress",
+    "ai_review_status": "needs_revision",
+    "required_review_role": "DER Reviewer",
+    "last_edited_at": "2026-06-26T09:10:00Z",
+    "content_summary": "Draft safety assessment for control logic and electrical interface behavior of the replacement avionics cooling fan controller.",
+    "sections": [
+      {
+        "section_id": "SEC-001",
+        "title": "Change Overview",
+        "status": "complete",
+        "content": "Replacement of the avionics cooling fan controller with updated control logic and modified electrical interface behavior."
+      },
+      {
+        "section_id": "SEC-002",
+        "title": "Failure Modes",
+        "status": "incomplete",
+        "content": "Failure mode analysis is incomplete and requires review of controller response under abnormal operating conditions."
+      },
+      {
+        "section_id": "SEC-003",
+        "title": "Safety Impact",
+        "status": "needs_ai_review",
+        "content": "Potential impacts include degraded cooling response, incorrect fan activation logic, and interface mismatch with existing avionics bay systems."
+      }
+    ]
+  },
+  {
+    "document_id": "DOC-002",
+    "case_id": "CERT-003",
+    "title": "Software Verification Evidence Matrix",
+    "artifact_type": "Software Verification Evidence",
+    "format": "verification_matrix",
+    "owner_id": "USR-004",
+    "current_editor_id": "USR-006",
+    "created_by": "USR-004",
+    "version": "0.1",
+    "status": "draft",
+    "ai_review_status": "not_reviewed",
+    "required_review_role": "Senior Certification Engineer",
+    "last_edited_at": "2026-06-26T09:25:00Z",
+    "content_summary": "Verification matrix mapping controller logic requirements to planned test evidence.",
+    "sections": [
+      {
+        "section_id": "SEC-004",
+        "title": "Functional Requirements",
+        "status": "incomplete",
+        "content": "Supplier must map controller activation logic, fault handling, and shutdown behavior to verification tests."
+      },
+      {
+        "section_id": "SEC-005",
+        "title": "Test Evidence",
+        "status": "missing",
+        "content": "No software verification test results have been attached yet."
+      }
+    ]
+  },
+  {
+    "document_id": "DOC-003",
+    "case_id": "CERT-003",
+    "title": "Electrical Interface Design Diagram",
+    "artifact_type": "Design Diagram",
+    "format": "diagram",
+    "owner_id": "USR-003",
+    "current_editor_id": "USR-003",
+    "created_by": "USR-003",
+    "version": "1.1",
+    "status": "under_review",
+    "ai_review_status": "reviewed_with_concerns",
+    "required_review_role": "DER Reviewer",
+    "last_edited_at": "2026-06-26T10:00:00Z",
+    "content_summary": "Diagram showing revised controller pinout, power interface, signal behavior, and connection to the avionics bay cooling circuit.",
+    "sections": [
+      {
+        "section_id": "SEC-006",
+        "title": "Interface Overview",
+        "status": "complete",
+        "content": "Diagram captures power, control, and status signal connections for the replacement controller."
+      },
+      {
+        "section_id": "SEC-007",
+        "title": "Open Concerns",
+        "status": "needs_review",
+        "content": "Compatibility with existing electrical load profile and abnormal-condition behavior still require certification review."
+      }
+    ]
+  },
+  {
+    "document_id": "DOC-004",
+    "case_id": "CERT-002",
+    "title": "Seat Frame Bracket Stress Analysis",
+    "artifact_type": "Stress Analysis Report",
+    "format": "structured_document",
+    "owner_id": "USR-004",
+    "current_editor_id": null,
+    "created_by": "USR-003",
+    "version": "0.2",
+    "status": "blocked",
+    "ai_review_status": "not_reviewed",
+    "required_review_role": "Certification Engineer",
+    "last_edited_at": "2026-06-25T15:45:00Z",
+    "content_summary": "Stress analysis draft is blocked because supplier load case data has not been submitted.",
+    "sections": [
+      {
+        "section_id": "SEC-008",
+        "title": "Load Cases",
+        "status": "missing",
+        "content": "Supplier load case input is missing."
+      },
+      {
+        "section_id": "SEC-009",
+        "title": "Stress Margin Summary",
+        "status": "blocked",
+        "content": "Cannot calculate margins until required load cases are provided."
+      }
+    ]
+  }
+]

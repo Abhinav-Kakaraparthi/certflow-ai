@@ -59,3 +59,55 @@ export function getEvidenceRecords() {
 export function getAuditEvents() {
   return request("/enterprise/audit-events");
 }
+
+export async function getDocumentsForCase(caseId) {
+  const response = await fetch(`${API_BASE_URL}/documents/case/${caseId}`);
+
+  if (!response.ok) {
+    throw new Error(`Unable to load documents for case ${caseId}`);
+  }
+
+  return response.json();
+}
+
+export async function getWorkspaceDocument(documentId) {
+  const response = await fetch(`${API_BASE_URL}/documents/${documentId}`);
+
+  if (!response.ok) {
+    throw new Error(`Unable to load document ${documentId}`);
+  }
+
+  return response.json();
+}
+
+export async function updateDocumentSection(documentId, payload) {
+  const response = await fetch(`${API_BASE_URL}/documents/${documentId}/sections`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Unable to update document ${documentId}`);
+  }
+
+  return response.json();
+}
+
+export async function createWorkspaceDocument(payload) {
+  const response = await fetch(`${API_BASE_URL}/documents`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    throw new Error("Unable to create workspace document");
+  }
+
+  return response.json();
+}

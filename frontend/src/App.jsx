@@ -4,6 +4,9 @@ import {
   getCertificationCases,
   getEnterpriseCaseSnapshot,
   getEnterpriseSummary,
+  getDocumentsForCase,
+  updateDocumentSection,
+  createWorkspaceDocument,
   runCertificationCase,
 } from "./services/certflowApi";
 import Sidebar from "./components/layout/Sidebar";
@@ -13,6 +16,7 @@ import AgentMap from "./components/dashboard/AgentMap";
 import CaseDetailPanel from "./components/dashboard/CaseDetailPanel";
 import HumanReviewPanel from "./components/dashboard/HumanReviewPanel";
 import EnterpriseCommandCenter from "./components/dashboard/EnterpriseCommandCenter";
+import EvidenceWorkspace from "./components/dashboard/EvidenceWorkspace";
 import "./App.css";
 
 function scoreFromRisk(risk) {
@@ -58,6 +62,8 @@ function App() {
   const [selectedCase, setSelectedCase] = useState(null);
   const [enterpriseSummary, setEnterpriseSummary] = useState(null);
   const [caseSnapshot, setCaseSnapshot] = useState(null);
+  const [documents, setDocuments] = useState([]);
+  const [selectedDocument, setSelectedDocument] = useState(null);
   const [error, setError] = useState("");
 
   async function loadEnterpriseSnapshot(caseId) {
@@ -68,6 +74,27 @@ function App() {
       setCaseSnapshot(snapshot);
     } catch {
       setCaseSnapshot(null);
+    }
+  }
+
+  async function loadDocuments(caseId) {
+    if (!caseId) return;
+
+    try {
+      const workspaceDocuments = await getDocumentsForCase(caseId);
+      setDocuments(workspaceDocuments);
+      setSelectedDocument((currentDocument) => {
+        return (
+          workspaceDocuments.find(
+            (document) => document.document_id === currentDocument?.document_id
+          ) ||
+          workspaceDocuments[0] ||
+          null
+        );
+      });
+    } catch {
+      setDocuments([]);
+      setSelectedDocument(null);
     }
   }
 
@@ -110,6 +137,7 @@ function App() {
       setCases(enrichedCases);
       setSelectedCase(defaultCase);
       await loadEnterpriseSnapshot(defaultCase?.id);
+      await loadDocuments(defaultCase?.id);
     } catch {
       setError("Unable to connect to CertFlow backend. Confirm FastAPI is running on port 8001 or use the deployed Render API.");
     } finally {
@@ -124,8 +152,32 @@ function App() {
   useEffect(() => {
     if (selectedCase?.id) {
       loadEnterpriseSnapshot(selectedCase.id);
+      loadDocuments(selectedCase.id);
     }
   }, [selectedCase?.id]);
+
+  async function handleSaveDocumentSection(documentId, payload) {
+    const updatedDocument = await updateDocumentSection(documentId, payload);
+
+    setDocuments((currentDocuments) =>
+      currentDocuments.map((document) =>
+        document.document_id === updatedDocument.document_id
+          ? updatedDocument
+          : document
+      )
+    );
+
+    setSelectedDocument(updatedDocument);
+    await loadEnterpriseSnapshot(updatedDocument.case_id);
+  }
+
+  async function handleCreateDocument(payload) {
+    const createdDocument = await createWorkspaceDocument(payload);
+
+    setDocuments((currentDocuments) => [...currentDocuments, createdDocument]);
+    setSelectedDocument(createdDocument);
+    await loadEnterpriseSnapshot(createdDocument.case_id);
+  }
 
   const approvedCount = cases.filter((item) => item.action === "auto_approve_case").length;
   const evidenceGapCount = cases.filter((item) => item.missingDocuments?.length > 0).length;
@@ -180,6 +232,16 @@ function App() {
           </>
         )}
 
+        {activeView === "evidence" && (
+          <EvidenceWorkspace
+            documents={documents}
+            selectedDocument={selectedDocument}
+            onSelectDocument={setSelectedDocument}
+            onSaveSection={handleSaveDocumentSection}
+            onCreateDocument={handleCreateDocument}
+          />
+        )}
+
         {activeView === "human_review" && (
           <HumanReviewPanel selectedCase={selectedCase} />
         )}
@@ -193,4 +255,6 @@ function App() {
 }
 
 export default App;
+
+
 

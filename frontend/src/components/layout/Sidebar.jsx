@@ -3,6 +3,7 @@
 const navItems = [
   { id: "command", label: "Command Center" },
   { id: "cases", label: "Certification Cases" },
+    { id: "evidence", label: "Evidence Workspace" },
   { id: "agents", label: "Agent Orchestration" },
   { id: "human_review", label: "Human Review" },
   { id: "audit", label: "Audit Trail" },
@@ -46,3 +47,4 @@ function Sidebar({ activeView = "command", onNavigate = () => {} }) {
 }
 
 export default Sidebar;
+
