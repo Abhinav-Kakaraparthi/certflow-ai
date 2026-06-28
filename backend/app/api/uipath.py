@@ -61,3 +61,58 @@ def submit_human_review(case_id: str, review: HumanReviewRequest):
         raise HTTPException(status_code=404, detail=str(error))
 
     return process_human_review(case_id=case_id, review=review)
+
+
+@router.post("/documents/{document_id}/route")
+def route_document_after_workspace_update(document_id: str):
+    from fastapi import HTTPException
+
+    from app.services.document_workspace_service import get_workspace_document
+
+    try:
+        document = get_workspace_document(document_id)
+    except ValueError as error:
+        raise HTTPException(status_code=404, detail=str(error)) from error
+
+    if document.status == "blocked":
+        next_action = "request_supplier_input"
+        assigned_role = "Supplier Evidence Owner"
+        maestro_stage = "Evidence Collection"
+        task_title = "Request missing supplier evidence"
+    elif document.ai_review_status in ["needs_revision", "reviewed_with_concerns"]:
+        next_action = "create_ai_review_task"
+        assigned_role = document.required_review_role
+        maestro_stage = "AI Evidence Review"
+        task_title = "Review updated certification evidence"
+    elif document.status in ["draft", "in_progress"]:
+        next_action = "continue_authoring"
+        assigned_role = "Certification Engineer"
+        maestro_stage = "Evidence Authoring"
+        task_title = "Complete certification artifact"
+    else:
+        next_action = "advance_to_human_approval"
+        assigned_role = document.required_review_role
+        maestro_stage = "Human Approval"
+        task_title = "Approve certification evidence"
+
+    return {
+        "document_id": document.document_id,
+        "case_id": document.case_id,
+        "artifact_type": document.artifact_type,
+        "document_status": document.status,
+        "ai_review_status": document.ai_review_status,
+        "maestro_stage": maestro_stage,
+        "next_uipath_action": next_action,
+        "task_title": task_title,
+        "assigned_role": assigned_role,
+        "routing_reason": (
+            f"{document.title} is {document.status} with AI review status "
+            f"{document.ai_review_status}. UiPath should route this artifact to "
+            f"{assigned_role} for the next certification action."
+        ),
+        "human_review_required": assigned_role in [
+            "DER Reviewer",
+            "Certification Manager",
+            "Senior Certification Engineer",
+        ],
+    }
