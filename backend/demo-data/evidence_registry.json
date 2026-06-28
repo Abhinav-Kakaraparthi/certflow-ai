@@ -1,0 +1,79 @@
+﻿[
+  {
+    "evidence_id": "EVD-001",
+    "case_id": "CERT-001",
+    "file_name": "material_equivalency_report.pdf",
+    "evidence_type": "Material Equivalency Report",
+    "submitted_by": "USR-006",
+    "assigned_reviewer": "USR-004",
+    "status": "accepted",
+    "submitted_at": "2026-06-24T09:15:00Z",
+    "last_action_by": "USR-004"
+  },
+  {
+    "evidence_id": "EVD-002",
+    "case_id": "CERT-001",
+    "file_name": "flammability_test_report.pdf",
+    "evidence_type": "Flammability Test Report",
+    "submitted_by": "USR-006",
+    "assigned_reviewer": "USR-004",
+    "status": "accepted",
+    "submitted_at": "2026-06-24T10:40:00Z",
+    "last_action_by": "USR-004"
+  },
+  {
+    "evidence_id": "EVD-003",
+    "case_id": "CERT-002",
+    "file_name": "interface_control_document.pdf",
+    "evidence_type": "Interface Control Document",
+    "submitted_by": "USR-006",
+    "assigned_reviewer": "USR-004",
+    "status": "under_review",
+    "submitted_at": "2026-06-25T13:20:00Z",
+    "last_action_by": "USR-003"
+  },
+  {
+    "evidence_id": "EVD-004",
+    "case_id": "CERT-002",
+    "file_name": "stress_analysis_report.pdf",
+    "evidence_type": "Stress Analysis Report",
+    "submitted_by": null,
+    "assigned_reviewer": "USR-004",
+    "status": "missing",
+    "submitted_at": null,
+    "last_action_by": "USR-003"
+  },
+  {
+    "evidence_id": "EVD-005",
+    "case_id": "CERT-003",
+    "file_name": "system_safety_assessment.pdf",
+    "evidence_type": "System Safety Assessment",
+    "submitted_by": null,
+    "assigned_reviewer": "USR-004",
+    "status": "missing",
+    "submitted_at": null,
+    "last_action_by": "USR-003"
+  },
+  {
+    "evidence_id": "EVD-006",
+    "case_id": "CERT-003",
+    "file_name": "software_verification_evidence.pdf",
+    "evidence_type": "Software Verification Evidence",
+    "submitted_by": null,
+    "assigned_reviewer": "USR-004",
+    "status": "missing",
+    "submitted_at": null,
+    "last_action_by": "USR-003"
+  },
+  {
+    "evidence_id": "EVD-007",
+    "case_id": "CERT-003",
+    "file_name": "der_review_record.pdf",
+    "evidence_type": "DER Review Record",
+    "submitted_by": null,
+    "assigned_reviewer": "USR-005",
+    "status": "blocked",
+    "submitted_at": null,
+    "last_action_by": "USR-002"
+  }
+]

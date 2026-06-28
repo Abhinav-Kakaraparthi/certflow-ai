@@ -1,0 +1,52 @@
+﻿[
+  {
+    "event_id": "AUD-001",
+    "case_id": "CERT-001",
+    "actor_id": "USR-006",
+    "actor_role": "Supplier Evidence Owner",
+    "action": "submitted_evidence",
+    "target": "material_equivalency_report.pdf",
+    "timestamp": "2026-06-24T09:15:00Z",
+    "summary": "Supplier submitted material equivalency report for cabin latch material change."
+  },
+  {
+    "event_id": "AUD-002",
+    "case_id": "CERT-001",
+    "actor_id": "USR-004",
+    "actor_role": "Senior Certification Engineer",
+    "action": "accepted_evidence",
+    "target": "flammability_test_report.pdf",
+    "timestamp": "2026-06-24T11:05:00Z",
+    "summary": "Certification engineer accepted flammability evidence."
+  },
+  {
+    "event_id": "AUD-003",
+    "case_id": "CERT-002",
+    "actor_id": "USR-003",
+    "actor_role": "Team Lead",
+    "action": "requested_missing_evidence",
+    "target": "stress_analysis_report.pdf",
+    "timestamp": "2026-06-25T15:30:00Z",
+    "summary": "Team lead requested missing stress analysis before certification review."
+  },
+  {
+    "event_id": "AUD-004",
+    "case_id": "CERT-003",
+    "actor_id": "USR-002",
+    "actor_role": "Certification Manager",
+    "action": "escalated_case",
+    "target": "DER review queue",
+    "timestamp": "2026-06-26T08:45:00Z",
+    "summary": "Manager escalated avionics cooling controller change due to missing safety and software evidence."
+  },
+  {
+    "event_id": "AUD-005",
+    "case_id": "CERT-003",
+    "actor_id": "AI-GEMINI",
+    "actor_role": "Gemini Certification Reasoning Agent",
+    "action": "generated_ai_reasoning",
+    "target": "CERT-003",
+    "timestamp": "2026-06-26T08:47:00Z",
+    "summary": "AI agent recommended DER review based on missing system safety, software verification, and DER evidence."
+  }
+]

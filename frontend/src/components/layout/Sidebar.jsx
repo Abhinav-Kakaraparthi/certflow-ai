@@ -1,29 +1,45 @@
-import { Plane, ShieldCheck } from "lucide-react";
+﻿import { Plane, ShieldCheck } from "lucide-react";
 
-function Sidebar() {
+const navItems = [
+  { id: "command", label: "Command Center" },
+  { id: "cases", label: "Certification Cases" },
+  { id: "agents", label: "Agent Orchestration" },
+  { id: "human_review", label: "Human Review" },
+  { id: "audit", label: "Audit Trail" },
+];
+
+function Sidebar({ activeView = "command", onNavigate = () => {} }) {
   return (
     <aside className="sidebar">
       <div className="brand">
-        <div className="brand-mark">
-          <Plane size={22} />
+        <div className="brand-icon">
+          <Plane size={34} />
         </div>
         <div>
-          <p className="eyebrow">UiPath AgentHack</p>
+          <p>UiPath AgentHack</p>
           <h1>CertFlow AI</h1>
         </div>
       </div>
 
-      <nav className="nav">
-        <a className="active">Command Center</a>
-        <a>Certification Cases</a>
-        <a>Agent Orchestration</a>
-        <a>Human Review</a>
-        <a>Audit Trail</a>
+      <nav className="nav-list">
+        {navItems.map((item) => (
+          <button
+            key={item.id}
+            type="button"
+            className={`nav-item ${activeView === item.id ? "active" : ""}`}
+            onClick={() => onNavigate(item.id)}
+          >
+            {item.label}
+          </button>
+        ))}
       </nav>
 
-      <div className="sidebar-card">
-        <ShieldCheck size={22} />
-        <p>Governed aerospace certification workflow with human-in-the-loop control.</p>
+      <div className="trust-card">
+        <ShieldCheck size={32} />
+        <p>
+          Governed aerospace certification workflow with role-based oversight,
+          evidence ownership, and human-in-the-loop control.
+        </p>
       </div>
     </aside>
   );

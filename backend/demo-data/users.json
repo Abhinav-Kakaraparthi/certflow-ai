@@ -1,0 +1,50 @@
+﻿[
+  {
+    "user_id": "USR-001",
+    "name": "Maya Reynolds",
+    "role": "Executive",
+    "team": "Certification Leadership",
+    "email": "maya.reynolds@certflow-demo.com",
+    "access_level": "enterprise"
+  },
+  {
+    "user_id": "USR-002",
+    "name": "Daniel Kim",
+    "role": "Certification Manager",
+    "team": "Aerospace Certification",
+    "email": "daniel.kim@certflow-demo.com",
+    "access_level": "program"
+  },
+  {
+    "user_id": "USR-003",
+    "name": "Priya Shah",
+    "role": "Team Lead",
+    "team": "Avionics Certification",
+    "email": "priya.shah@certflow-demo.com",
+    "access_level": "team"
+  },
+  {
+    "user_id": "USR-004",
+    "name": "Alex Morgan",
+    "role": "Senior Certification Engineer",
+    "team": "Avionics Certification",
+    "email": "alex.morgan@certflow-demo.com",
+    "access_level": "assigned_cases"
+  },
+  {
+    "user_id": "USR-005",
+    "name": "Jordan Lee",
+    "role": "DER Reviewer",
+    "team": "Independent Review",
+    "email": "jordan.lee@certflow-demo.com",
+    "access_level": "review_queue"
+  },
+  {
+    "user_id": "USR-006",
+    "name": "Sam Rivera",
+    "role": "Supplier Evidence Owner",
+    "team": "Supplier Quality",
+    "email": "sam.rivera@supplier-demo.com",
+    "access_level": "submitted_evidence"
+  }
+]

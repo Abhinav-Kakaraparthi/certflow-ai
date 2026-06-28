@@ -39,3 +39,23 @@ export function submitHumanReview(caseId, reviewPayload) {
     body: JSON.stringify(reviewPayload),
   });
 }
+
+export function getEnterpriseSummary() {
+  return request("/enterprise/summary");
+}
+
+export function getEnterpriseCaseSnapshot(caseId) {
+  return request(`/enterprise/cases/${caseId}/snapshot`);
+}
+
+export function getEnterpriseUsers() {
+  return request("/enterprise/users");
+}
+
+export function getEvidenceRecords() {
+  return request("/enterprise/evidence");
+}
+
+export function getAuditEvents() {
+  return request("/enterprise/audit-events");
+}
