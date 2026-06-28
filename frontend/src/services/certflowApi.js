@@ -1,6 +1,6 @@
-const API_BASE_URL =
-  import.meta.env.VITE_CERTFLOW_API_URL || "http://127.0.0.1:8001/api";
-
+﻿const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "https://certflow-ai-api.onrender.com/api";
+  
 async function request(path, options = {}) {
   const response = await fetch(`${API_BASE_URL}${path}`, {
     headers: {
@@ -111,3 +111,4 @@ export async function createWorkspaceDocument(payload) {
 
   return response.json();
 }
+
