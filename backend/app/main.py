@@ -47,3 +47,16 @@ def api_health_check():
         "service": "CertFlow AI API",
         "platform": "Render"
     }
+
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "https://certflow-ai-web.onrender.com",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
